@@ -1,0 +1,435 @@
+//football clubs player list
+
+<?php
+ 	
+	 $page = $_SERVER['http://localhost/Distributed/deploymessages.php'];
+$sec = "";
+     //accepting variables from the text box on our site
+  //this feature is also used for manually sending messages to the intended user 
+
+ //saving the bot token into the variable $botToken
+$botToken = "329242770:AAGYj0-l8nuNwGspCpaFXlpgqlhy_oBB9NE";
+//instantiating the url for telegram
+$website = "https://api.telegram.org/bot".$botToken;
+
+$update = file_get_contents($website."/getupdates");
+$update = json_decode($update, TRUE);
+//getting the last array location of the received message
+$current_update =end($update["result"]);
+//getting the chat id of the user
+$chatId = $current_update["message"]["chat"]["id"]; 
+//receiving input message from the user and saving it in a variable
+$newmessage=$current_update["message"]["text"];
+
+$teleuser=$current_update["message"]["from"]["first_name"];  
+//file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$messageme); 
+  
+   //checking the text received from the user and giving it an associated message
+   switch($newmessage) {
+        
+			case "/begin":
+            $botMessage="Enabled";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+        
+			case "/end":
+            $botMessage="Logged off ";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+        
+			case "Bournemouth":
+			$botMessage="Artur Boruc, S. Francis, Steve Cook, Nathan Ake, C. Daniels, Jack Wilshere, Harry Arter, Adam Smith, Joshua King, Marc Pugh, Callum Wilson";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+			
+			case "bournemouth":
+			$botMessage="Artur Boruc, S. Francis, Steve Cook, Nathan Ake, C. Daniels, Jack Wilshere, Harry Arter, Adam Smith, Joshua King, Marc Pugh, Callum Wilson";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+
+			case "Southampton":
+            $botMessage="Fraser Forster";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+			
+			case "southampton":
+            $botMessage="Fraser Forster";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+			case "Hello":
+            $botMessage="yep";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+			case "bye":
+            $botMessage="hope to chat you some other time";
+            file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+	
+	
+			case "how old are you?":
+            $botMessage="soon to be a year older";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+			break;
+		
+			case "/help":
+            $botMessage="check the symbol / near your text box";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+        
+			case "/go":
+            $botMessage="hello ";
+            file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+            
+			// code incase you want to use a database 
+        	case "/notification":
+			// thaconect.php is a page that is used for the connection string that links to the database. You can create one and type your connection string into it
+			
+			include('connect.php');
+            
+			case "Who are you?":
+            $botMessage="I'm nothing but just an interactive bot :)";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "who are you?":
+            $botMessage="I am a friendly interactive Bot :)";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "WHO ARE YOU?":
+            $botMessage="I am a friendly interactive Bot :)";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+			////////////////////////////////////////////////////////////////////////////////////
+            case "how are you?"  :
+            $botMessage="Great!";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "How are you?"  :
+            $botMessage="Great!";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "HOW ARE YOU?"  :
+            $botMessage="Great!";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+			//////////////////////////////////////////////////////////////////////////////////////
+            case "What are you called?":
+            $botMessage="Team Players View";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+             case "what are you called?":
+            $botMessage="Team Players View";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+             case "WHAT ARE YOU CALLED?":
+            $botMessage="Team Players View";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+			
+///////////////////////////////////////////////////////////////////////////////////
+            case "Where are you located from?":
+            $botMessage="Valley View University";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "where are you located from?":
+            $botMessage="Valley View University";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "WHERE ARE YOU FROM?":
+            $botMessage="Valley View University";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+//////////////////////////////////////////////////////////////////////////////
+            
+            case "Waguan?":
+            $botMessage="hahaha, nothing much...";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+            
+            case "waguan?":
+            $botMessage="hahaha, nothing much...";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+            
+            case "WAGUAN?":
+            $botMessage="hahaha, nothing much...";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+  ////////////////////////////////////////////////////////////////////////////////          
+            case "What is your age?":
+            $botMessage="Just a few months old";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+            
+            case "what is your age?":
+            $botMessage="Just a few months old";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "WHAT IS YOUR AGE?":
+            $botMessage="Just a few months old";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+			
+			//////////////////////////////////////////////////////////////////////////////////
+            
+			case "Lets be friends?":
+            $botMessage="Sure, I'd love that ";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+            
+            case "lets be friends?":
+            $botMessage="Sure, I'd love that ";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "LETS BE FRIENDS?":
+            $botMessage="Just a few months old";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+			
+			
+			case "/arsenal":
+			$botMessage="Petr Cech, Koscielny, Walcott, Sanchez, Paulista, Bellerin, Xhaka, Ozil, Iwobi";
+			file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/Arsenal":
+			$botMessage="Petr Cech, Koscielny, Walcott, Sanchez, Paulista, Bellerin, Xhaka, Ozil, Iwobi";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/ARSENAL":
+			$botMessage="Petr Cech, Koscielny, Walcott, Sanchez, Paulista, Bellerin, Xhaka, Ozil, Iwobi";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/real madrid":
+			$botMessage="K. Navas, R. Varane, Ramos, Marcelo, casemiro, Modric, Kroos, C. Ronaldo";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/Real madrid":
+			$botMessage="Petr Cech, Koscielny, Walcott, Sanchez, Paulista, Bellerin, Xhaka, Ozil, Iwobi";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/REAL MADRID":
+			$botMessage="Petr Cech, Koscielny, Walcott, Sanchez, Paulista, Bellerin, Xhaka, Ozil, Iwobi";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/manchester united":
+			$botMessage="De Gea, Rojo, Pogba, Schnedelein, Ibrahimovic, Mata, Valencia";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+				
+			case "/Manchester United":
+			$botMessage="De Gea, Rojo, Pogba, Schnedelein, Ibrahimovic, Mata, Valencia";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/MANCHESTER UNITED":
+			$botMessage="De Gea, Rojo, Pogba, Schnedelein, Ibrahimovic, Mata, Valencia";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			
+			case "/chelsea":
+			$botMessage="Courtois, Luiz, Kante, Hazard, Willian, Costa, Pedro";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;	
+			
+			case "/Chelsea":
+			$botMessage="Courtois, Luiz, Kante, Hazard, Willian, Costa, Pedro";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;	
+			
+			case "/CHELSEA":
+			$botMessage="Courtois, Luiz, Kante, Hazard, Willian, Costa, Pedro";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;	
+			
+			
+			case "/burnley":
+			$botMessage="Heaton, Keane, Ward, Boyd, Arfield, Gray, Marney";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+				
+			case "/Burnley":
+			$botMessage="Heaton, Keane, Ward, Boyd, Arfield, Gray, Marney";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/BURNLEY":
+			$botMessage="Heaton, Keane, Ward, Boyd, Arfield, Gray, Marney";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/tottenham":
+			$botMessage="Lloris, Walker, Winks, Kane, Wanyama, Eriksen, Dele Alli";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;	
+			
+			case "/Tottenham":
+			$botMessage="Lloris, Walker, Winks, Kane, Wanyama, Eriksen, Dele Alli";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;	
+			
+			case "/TOTTENHAM":
+			$botMessage="Lloris, Walker, Winks, Kane, Wanyama, Eriksen, Dele Alli";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;	
+			
+			case "/manchester city":
+			$botMessage="Bravo, Fernando, Silva, K.D. Bruyne, Aguero, Clichy, Zabaleta";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+
+				case "/Manchester City":
+			$botMessage="Bravo, Fernando, Silva, K.D. Bruyne, Aguero, Clichy, Zabaleta";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "/MANCHESTER CITY":
+			$botMessage="Bravo, Fernando, Silva, K.D. Bruyne, Aguero, Clichy, Zabaleta";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+			
+			case "CAN WE CHAT?":
+            $botMessage="Definitely";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+  ///////////////////////////////////////////////////////////////////////////////////////////          
+            case "Hey":
+            $botMessage="Hello";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+            
+            case "hey":
+            $botMessage="Hello";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+            case "HEY":
+            $botMessage="Hello";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage);
+            break;
+
+////////////////////////////////////////////////////////////////////////////////////
+            case "Hi":
+            $botMessage="hello ";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+             
+             case "hi":
+            $botMessage="hello ";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+
+            case "HI":
+            $botMessage="hello ";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+
+			/////////////////////////////////////////////////////////////
+             default:
+           $botMessage="Funny enough this is not a part of my intelligence. Please try again!";
+file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=".$botMessage.$teleuser);
+            break;
+      
+    } 
+   
+?>
+
+
+<!DOCTYPE html>
+<html>
+		<head>
+				<meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'"/>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Adjeilarkorbot</title>
+						<link rel="stylesheet" type="text/css" href="formValidators/vendor/bootstrap/css/bootstrap-theme.css"/>
+						<link rel="stylesheet" type="text/css" href="formValidators/vendor/bootstrap/css/bootstrap.css"/>
+				<script type="text/javascript" href="formValidators/vendor/bootstrap/js/bootstrap.js"></script>
+				<script type="text/javascript" href="formValidators/vendor/jquery/jquery-1.10.2.min.js"></script>
+				<link rel="stylesheet" href="api.css" type="text/css">
+		</head>
+	
+	<body>
+			<header>
+					<nav id="nbar" class="navbar navbar-defaullt navbar-inverse navbar-fixed-top" role="navigation">
+    
+						<div class="container">
+							<div class="navbar-header">
+								<nav class="navbar navbar-inverse">
+									<div class="container-fluid">
+										<div class="navbar-header">
+											<a class="navbar-brand" href="#">Adjeilarkorbot</a>
+										</div>
+											<ul class="nav navbar-nav">
+												<li class="active"><a href="index.php"><span  class="glyphicon glyphicon-home">HOME </span></a></li>
+												<li class="active"><a href="#"> <span class="glyphicon glyphicon-phone">CONTACT US</span></a></li> 
+												<li class="dropdown" ><a href="#" data-toggle="dropdown" class="dropdown-toggle"> <span  class="glyphicon glyphicon-user">ABOUT US</span></a>
+													<ul class="dropdown-menu" >
+														<li > <a href="#">GALLERY</a> </li>
+														<li > <a href="#">GALLERY</a> </li> 
+													</ul> 
+												</li> 
+											</ul>
+									</div>
+								</nav>  
+							</div>
+						</div>
+					</nav>
+			</header>
+        
+			<div class="container" style="float:center;padding-top:200px;" >
+					<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">SEND MESSAGE TO MY BOT</h3>
+							</div>
+							
+							<div class="panel-body" id="load_tweets">
+
+									<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+									<script type="text/javascript">
+											var auto_refresh = setInterval(
+											function ()
+												{
+													$('#load_tweets').load('record_count.php').fadeIn("slow");
+												}, 10000); // refresh every 10000 milliseconds
+
+									</script>
+							  
+									<form method="post"  action="#">
+										<div class="form-group">
+											<input class="form-control" name="message" type="text">
+										  
+											<button class="btn btn-success" name="submit" type="submit" ><span class="glyphicon glyphicon-envelope"></span>SEND</button>
+										</div>
+								  
+									</form>
+					  
+					  
+							</div>
+					</div>
+			</div>
+	</body>  
+
+</html>
+    
